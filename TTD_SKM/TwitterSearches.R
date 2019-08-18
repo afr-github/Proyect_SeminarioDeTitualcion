@@ -40,31 +40,36 @@ TeslaUser <- getUser (
 #Verify Followers
 TeslaUser$getFollowersCount()
 
-#Certain accounts where taken down, just taking in to account the general majority
+#Certain accounts where taken down, just taking in to account the general majority availible 
+#through the api
 
-#All Tesla Followers
+#All Tesla Followers availible
 TeslaFollowers <- TeslaUser$getFollowers(n = 4053000)
 TeslaFollowers.df <- twListToDF(TeslaFollowers)
-
 View(TeslaFollowers.df)
 
-#Tesla Followers 2 atributes
-TeslaFollowers.df.general <- subset(
-  x = TeslaFollowers.df,
-  select = c(name, created)
-)
-
-#Followers de Tesla
 write.csv(
   x = TeslaFollowers.df,
   file = "TwitterTeslaFollowers.csv"
+)
+
+#Tesla Followers 3 atributes
+TeslaFollowers.df.general <- subset(
+  x = TeslaFollowers.df,
+  select = c(name,created,id)
 )
 
 #2014 Followers
 TeslaFollowers.df.general2014 <- subset(
   x = TeslaFollowers.df.general,
   subset = "2014-12-31" > created & created > "2014-01-01",
-  select = c(name, created)
+  select = c(name, created,id)
+)
+#2014 sample
+TeslaFollowers.df.general2014.sample <- subset(
+  x = TeslaFollowers.df.general2014,
+  subset = created < "2014-01-05",
+  select = c(name, created,id)
 )
 
 #2015 Followers
@@ -102,7 +107,6 @@ TeslaFollowers.df.general2019 <- subset(
   select = c(name, created)
 )
 
-
 #View of 2014 - 2019Followers
 View(TeslaFollowers.df.general2014)
 
@@ -137,9 +141,32 @@ write.csv(
   file = "TwitterTeslaFollowers2019.csv"
 )
 
+id <- TeslaFollowers.df.general2014.sample$id
+
+id.users.2014.01.07 <- lookupUsers(
+  users = id
+)
+
+id.users.2014.01.07.df <- twListToDF(id.users.2014.01.07)
+View(id.users.2014.01.07.df)
+
+
+#Get all followers tweets
+followers2014.stw <- userTimeline(
+  user = id.users.2014.01.07$`2276419820`,
+  n = 3200,
+  maxID = '1135625551593562113',
+  includeRts = TRUE,
+  excludeReplies = FALSE
+)
+
+followers2014.stw.df.2276419820 <- twListToDF(followers2014.stw)
+
+View(followers2014.stw.df)
+
 #igraph conections
 #2014
-edges
+
 
 #2015
 
