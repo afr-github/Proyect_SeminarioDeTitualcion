@@ -21,16 +21,6 @@ vha.tsla_stock <- tsla_stock
 vha.tsla_stock.oh <- (vha.tsla_stock$High - vha.tsla_stock$Open)
 df.vha.tsla_stock.oh <- data.frame(vha.tsla_stock.oh)
 names(df.vha.tsla_stock.oh) <- c("Open-High")
-
-#Open - Low
-vha.tsla_stock.ol <- (vha.tsla_stock$Low - vha.tsla_stock$Open)
-df.vha.tsla_stock.ol <- data.frame(vha.tsla_stock.ol)
-names(df.vha.tsla_stock.ol) <- c("Open-Low")
-
-#Open - Close
-vha.tsla_stock.oc <- (vha.tsla_stock$Close - vha.tsla_stock$Open)
-df.vha.tsla_stock.oc <- data.frame(vha.tsla_stock.oc)
-names(df.vha.tsla_stock.oc) <- c("Open-Close")
 #####
 
 #Open-High Intervals
@@ -225,6 +215,12 @@ hdate20_25 <- ifelse(
   vha.tsla_stock$Date,
   ""
 )
+ldate20_25 <- ifelse(
+  min(df.vha.tsla_stock.oh.val20_25$`Open-High`) == 
+    (vha.tsla_stock$High-vha.tsla_stock$Open),
+  vha.tsla_stock$Date,
+  "" 
+)
 df.hdate20_25 <- data.frame(
   subset(
     x = hdate20_25,
@@ -233,14 +229,30 @@ df.hdate20_25 <- data.frame(
   ),
   stringsAsFactors = FALSE
 )
+df.ldate20_25 <- data.frame(
+  subset(
+    x = ldate20_25,
+    subset = ldate20_25 != "",
+    select = ldate20_25
+  ),
+  stringsAsFactors = FALSE
+)
 names(df.hdate20_25) <- c("Dates")
+names(df.ldate20_25) <- c("Dates")
 df.hdate20_25 <- as.Date(df.hdate20_25$Dates, "%d/%m/%Y")
+df.ldate20_25 <- as.Date(df.ldate20_25$Dates, "%d/%m/%Y")
 #####
 
 #25_37
 #####
 hdate25_37 <- ifelse(
   max(df.vha.tsla_stock.oh.val25_37$`Open-High`) == 
+    (vha.tsla_stock$High-vha.tsla_stock$Open),
+  vha.tsla_stock$Date,
+  ""
+)
+ldate25_37 <- ifelse(
+  min(df.vha.tsla_stock.oh.val25_37$`Open-High`) == 
     (vha.tsla_stock$High-vha.tsla_stock$Open),
   vha.tsla_stock$Date,
   ""
@@ -253,13 +265,21 @@ df.hdate25_37 <- data.frame(
   ),
   stringsAsFactors = FALSE
 )
+df.ldate25_37 <- data.frame(
+  subset(
+    x = ldate25_37,
+    subset = ldate25_37 != "",
+    select = ldate25_37
+  ),
+  stringsAsFactors = FALSE
+)
 names(df.hdate25_37) <- c("Dates")
+names(df.ldate25_37) <- c("Dates")
 df.hdate25_37 <- as.Date(df.hdate25_37$Dates, "%d/%m/%Y")
+df.ldate25_37 <- as.Date(df.ldate25_37$Dates, "%d/%m/%Y")
 
 #####
-#####=
-
-
+#####
 
 #Cant. values of Intervals
 #####
@@ -312,14 +332,24 @@ vha.tsla_stock.hprice <- c(
 #Low-Date values of Intervals
 #####
 vha.tsla_stock.ldate <- c(
-  
+  df.ldate0_5[1],
+  df.ldate5_10[1],
+  df.ldate10_15[1],
+  df.ldate15_20[1],
+  df.ldate20_25[1],
+  df.ldate25_37[1]
 )
 #####
 
 #Low-Price values of Intervals
 #####
 vha.tsla_stock.lprice <- c(
-  
+  min(df.vha.tsla_stock.oh.val0_5$`Open-High`),
+  min(df.vha.tsla_stock.oh.val5_10$`Open-High`),
+  min(df.vha.tsla_stock.oh.val10_15$`Open-High`),
+  min(df.vha.tsla_stock.oh.val15_20$`Open-High`),
+  min(df.vha.tsla_stock.oh.val20_25$`Open-High`),
+  min(df.vha.tsla_stock.oh.val25_37$`Open-High`)
 )
 #####
 
@@ -335,11 +365,7 @@ names(df.vha.tsla_stock.stats) <-
   c("Cant","Average","High-Date","High-Price","Low-Date","Low-Price")
 View(df.vha.tsla_stock.stats)
 
-#Variacion durante horas inactivas
-#####
 
-
-#####
 
 
 
