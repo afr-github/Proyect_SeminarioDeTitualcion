@@ -23,10 +23,8 @@ TSLATwFollowers4 <- read.csv(
   stringsAsFactors = FALSE
 )
 
-TSLATwFollowers.c <- merge(
-  x = TSLATwFollowers1,
-  y = TSLATwFollowers2
-)
+#  ,,TSLATwFollowers3,TSLATwFollowers4
 
 View(TSLATwFollowers1)
+
 
