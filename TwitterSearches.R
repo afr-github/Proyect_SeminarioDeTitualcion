@@ -35,6 +35,7 @@ TeslaUser <- getUser (
   user = "Tesla"
 )
 
+View(TeslaUser)
 #Verify Followers
 TeslaUser$getFollowersCount()
 
@@ -42,8 +43,18 @@ TeslaUser$getFollowersCount()
 #through the api
 
 #All Tesla Followers availible
-TeslaFollowers <- TeslaUser$getFollowers(n = 4053000)
-TeslaFollowers.df <- twListToDF(TeslaFollowers)
+TeslaFollowers <- TeslaUser$getFollowers(n = 40000)
+#TeslaFollowers2 <- TeslaUser$getFollowers(n = 40000)
+#TeslaFollowers3 <- TeslaUser$getFollowers(n = 40000)
+#TeslaFollowers4 <- TeslaUser$getFollowers(n = 40000)
+#TeslaFollowers5 <- TeslaUser$getFollowers(n = 40000)
+
+df.TeslaFollowers <- twListToDF(TeslaFollowers)
+#df.TeslaFollowers2 <- twListToDF(TeslaFollowers2)
+#df.TeslaFollowers3 <- twListToDF(TeslaFollowers3)
+#df.TeslaFollowers4 <- twListToDF(TeslaFollowers4)
+#df.TeslaFollowers5 <- twListToDF(TeslaFollowers5)
+
 View(TeslaFollowers.df)
 
 write.csv(
