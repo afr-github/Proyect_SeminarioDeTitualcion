@@ -73,10 +73,15 @@ TwSearch23c <- rbind(TwSearch23,TwSearch23b)
 TwSearch28 <- userTimeline(
   user = Twuser[28], n = 3000,includeRts = TRUE,excludeReplies = FALSE, maxID = 1134577963066961920#, sinceID = 473663107244773376
 )
+TwSearch29 <- userTimeline(
+  user = Twuser[29], n = 3000,includeRts = TRUE,excludeReplies = FALSE#, maxID = 1134276858525245440#, sinceID = 473663107244773376
+)
+TwSearch30 <- userTimeline(
+  user = Twuser[30], n = 3000,includeRts = TRUE,excludeReplies = FALSE#, maxID = 1134276858525245440#, sinceID = 473663107244773376
+)
 
 
-
-TwSearch28 <- twListToDF(TwSearch28)
-View(TwSearch28)
+TwSearch30 <- twListToDF(TwSearch30)
+View(TwSearch30)
 
 
