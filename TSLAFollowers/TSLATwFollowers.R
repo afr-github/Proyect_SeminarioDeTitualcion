@@ -1,4 +1,3 @@
-library()
 #Operacion 1
 #Tesla Motros Inc. Twitter Followers (TSLATwFollowers)
 TSLATwFollowers1 <- read.csv(
@@ -72,17 +71,3 @@ df.TSLAFollowersA <- subset(
 TopTSLAFollowers <- rbind(
   df.TSLAFollowersE, df.TSLAFollowersD, df.TSLAFollowersC, df.TSLAFollowersB, df.TSLAFollowersA
 )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
