@@ -63,22 +63,57 @@ df.TSLATwTimeline$reply_to_user_id <- ifelse(
 #con strcapture, eliminando el dato despues de haber recuperado la informacion que estan en el campo y pasara los a un data.frame
 
 
+
+datos <- df.TSLATwTimeline$mentions_user_id
+
+# Esto es para agarrar el texto que tenga el patron que busco
 View(strcapture(
   pattern = "([[:digit:]]{1,100})",
   x = datos,
   proto = data.frame(chr=character())
 ))
 
-for(i in df.TSLATwTimeline$mentions_user_id){
+
+listmentions <- data.frame()
+
+for(i in 10){
+  strcapture(
+    pattern = "([[:digit:]]{1,100})",
+    x = datos,
+    proto = listmentions[i]
+  )
   datos <- df.TSLATwTimeline$mentions_user_id
+#  substr(
+#    x = df.TSLATwTimeline$mentions_user_id,
+#    start = nchar(df.TSLATwTimeline$mentions_user_id) - (nchar(df.TSLATwTimeline$mentions_user_id)- (nchar(datos[i])))
+#    stop = nchar(df.TSLATwTimeline$mentions_user_id)
+#  )
+  replace(
+    df.TSLATwTimeline$mentions_user_id,
+    0:nchar(dato), ##Algo asi
+    ""
+  )
 }
 
 View(datos[1:10])
 
 
 
+
 str(df.TSLATwTimeline$mentions_user_id.list)
 View(df.TSLATwTimeline$mentions_user_id.list[3])
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
