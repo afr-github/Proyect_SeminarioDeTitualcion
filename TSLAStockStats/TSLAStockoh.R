@@ -1,7 +1,7 @@
 library(readr)
 #TeslaStock
 tsla_stock <- read.csv(
-  file = "TSLAStock 06-2014-06-2019_Original_Ready.csv",
+  file = "TSLAStock.csv",
   header = TRUE,
   sep = ",",
   stringsAsFactors = FALSE

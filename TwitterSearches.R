@@ -8,9 +8,6 @@ TwitterTimeline <- userTimeline(
   excludeReplies = FALSE
 )
 
-#Timeline view from 2014-2019
-View(TwitterTimeline)
-
 #Twitter listo to Data frame
 TwitterTimeline.df <- twListToDF(TwitterTimeline)
 
@@ -27,7 +24,7 @@ View(TwitterTimeline.df)
 #TwitterTimeline2014-2019 file
 write.csv(
   x = TwitterTimeline.df,
-  file = "TwTimeLine2014-2019.csv"
+  file = "TSLATwTimeLine.csv"
 )
 
 #Tesla account info
@@ -59,7 +56,7 @@ View(TeslaFollowers.df)
 
 write.csv(
   x = TeslaFollowers.df,
-  file = "TwitterTeslaFollowers.csv"
+  file = "TSLATwFollowers.csv"
 )
 
 #Get all followers tweets

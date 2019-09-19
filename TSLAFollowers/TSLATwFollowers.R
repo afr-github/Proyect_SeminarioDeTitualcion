@@ -34,6 +34,7 @@ df.TSLAFollowers <- subset(
 )
 #Operacion 5
 df.TSLAFollowers <- df.TSLAFollowers[!duplicated(df.TSLAFollowers$id),]
+View(df.TSLAFollowers)
 
 #Operacion 6
 #Nivel E
@@ -71,3 +72,5 @@ df.TSLAFollowersA <- subset(
 TopTSLAFollowers <- rbind(
   df.TSLAFollowersE, df.TSLAFollowersD, df.TSLAFollowersC, df.TSLAFollowersB, df.TSLAFollowersA
 )
+
+View(df.TSLAFollowersA)
