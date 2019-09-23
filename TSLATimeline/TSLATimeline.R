@@ -1,3 +1,8 @@
+#Como checar que los flowers no son bots
+#Crear y popular la base de datos.
+#?Generar mas followers para trabajar con.
+library(stringr)
+
 TSLATwTimeline <- read.csv(
   file = "TSLATimeline/TSLATwTimeline.csv",
   sep = ",",
@@ -19,7 +24,7 @@ df.TSLATwTimeline <- subset(
 )
 
 #Workable version
-View(df.TSLATwTimeline)
+#View(df.TSLATwTimeline)
 
 #user_id limpiado
 df.TSLATwTimeline$user_id <- substr(
@@ -35,7 +40,7 @@ df.TSLATwTimeline$status_id <- substr(
   stop =  nchar(df.TSLATwTimeline$status_id)
 )
 
-#reply_to_status_id limpieado
+#reply_to_status_id limpiado
 df.TSLATwTimeline$reply_to_status_id <- ifelse(
   test = nchar(df.TSLATwTimeline$reply_to_status_id) > 1,
   yes = substr(
@@ -46,7 +51,7 @@ df.TSLATwTimeline$reply_to_status_id <- ifelse(
   no = df.TSLATwTimeline$reply_to_status_id <- ""
 )
 
-#reply_to_user_id limpieado
+#reply_to_user_id limpiado
 df.TSLATwTimeline$reply_to_user_id <- ifelse(
   test = nchar(df.TSLATwTimeline$reply_to_user_id) > 1,
   yes = substr(
@@ -57,78 +62,45 @@ df.TSLATwTimeline$reply_to_user_id <- ifelse(
   no = df.TSLATwTimeline$reply_to_user_id <- ""
 )
 
-#WORK 
-
-#se puede hacer un ciclo de n intentos para agarrar los ids de los usuarios 
-#con strcapture, eliminando el dato despues de haber recuperado la informacion que estan en el campo y pasara los a un data.frame
-
-
-
-datos <- df.TSLATwTimeline$mentions_user_id
-
-# Esto es para agarrar el texto que tenga el patron que busco
-View(strcapture(
-  pattern = "([[:digit:]]{1,100})",
-  x = datos,
-  proto = data.frame(chr=character())
-))
-
-
-listmentions <- data.frame()
-
-for(i in 10){
-  strcapture(
-    pattern = "([[:digit:]]{1,100})",
-    x = datos,
-    proto = listmentions[i]
+#mentions_user_id limpiado
+maximum <- max(str_count(
+    string = df.TSLATwTimeline$mentions_user_id,
+    pattern = 'x'
   )
-  datos <- df.TSLATwTimeline$mentions_user_id
-#  substr(
-#    x = df.TSLATwTimeline$mentions_user_id,
-#    start = nchar(df.TSLATwTimeline$mentions_user_id) - (nchar(df.TSLATwTimeline$mentions_user_id)- (nchar(datos[i])))
-#    stop = nchar(df.TSLATwTimeline$mentions_user_id)
-#  )
-  replace(
-    df.TSLATwTimeline$mentions_user_id,
-    0:nchar(dato), ##Algo asi
-    ""
-  )
-}
-
-View(datos[1:10])
-
-
-
-
-str(df.TSLATwTimeline$mentions_user_id.list)
-View(df.TSLATwTimeline$mentions_user_id.list[3])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#mentions_user_id limpieado
-df.TSLATwTimeline$mentions_user_id <- ifelse(
-  test = nchar(df.TSLATwTimeline$mentions_user_id) > 1,
-  yes = substr(
-    x = df.TSLATwTimeline$mentions_user_id,
-    start = nchar(df.TSLATwTimeline$mentions_user_id) - (nchar(df.TSLATwTimeline$mentions_user_id)-2),
-    stop = nchar(df.TSLATwTimeline$mentions_user_id)
-  ),
-  no = df.TSLATwTimeline$mentions_user_id <- ""
 )
 
-#quoted_status_id
+df.TSLATwTimeline$mentions_user_id <- str_remove(
+  string = df.TSLATwTimeline$mentions_user_id,
+  pattern = 'x'
+)
+
+df.TSLATwTimeline$mentions_user_id <- 
+str_split_fixed(
+  string = df.TSLATwTimeline$mentions_user_id,
+  pattern = ' x',
+  n = maximum
+)
+
+for(i in length(df.TSLATwTimeline$mentions_user_id)){
+      df.TSLATwTimeline <- as.data.frame(
+          x = replace(
+            x = df.TSLATwTimeline, 
+            list = which(names(df.TSLATwTimeline) == 'ext_media_expanded_url'),
+            values = df.TSLATwTimeline$mentions_user_id[i]
+            )
+      )
+      df.TSLATwTimeline <- as.data.frame(
+        x = append(
+            x = df.TSLATwTimeline, 
+            values = df.TSLATwTimeline$mentions_user_id[i],
+            after = which(names(df.TSLATwTimeline) == 'mentions_user_id')
+            )
+      )
+}
+df.TSLATwTimeline$X.. <- NULL
+
+
+#quoted_status_id limpiado
 
 
 
