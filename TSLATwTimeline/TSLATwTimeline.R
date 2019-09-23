@@ -23,9 +23,6 @@ df.TSLATwTimeline <- subset(
   select = df.TSLATwTimeline.usable
 )
 
-#Workable version
-#View(df.TSLATwTimeline)
-
 #user_id limpiado
 df.TSLATwTimeline$user_id <- substr(
   x = df.TSLATwTimeline$user_id,
@@ -63,7 +60,7 @@ df.TSLATwTimeline$reply_to_user_id <- ifelse(
 )
 
 #mentions_user_id limpiado
-maximum <- max(str_count(
+maximum.muil <- max(str_count(
     string = df.TSLATwTimeline$mentions_user_id,
     pattern = 'x'
   )
@@ -78,7 +75,7 @@ df.TSLATwTimeline$mentions_user_id <-
 str_split_fixed(
   string = df.TSLATwTimeline$mentions_user_id,
   pattern = ' x',
-  n = maximum
+  n = maximum.muil
 )
 
 for(i in length(df.TSLATwTimeline$mentions_user_id)){
@@ -101,17 +98,52 @@ df.TSLATwTimeline$X.. <- NULL
 
 
 #quoted_status_id limpiado
+maximum.qsil <- maximum.muil
 
+df.TSLATwTimeline$mentions_screen_name <- 
+  str_split_fixed(
+    string = df.TSLATwTimeline$mentions_screen_name,
+    pattern = ' ',
+    n = maximum.qsil
+)
 
+for(i in length(df.TSLATwTimeline$mentions_screen_name)){
+  df.TSLATwTimeline <- as.data.frame(
+    x = append(
+      x = df.TSLATwTimeline, 
+      values = df.TSLATwTimeline$mentions_user_id[i],
+      after = which(names(df.TSLATwTimeline) == 'mentions_screen_name')
+    )
+  )
+}
 
+#quoted_status_id limpiado
+df.TSLATwTimeline$quoted_status_id <- substr(
+  x = df.TSLATwTimeline$quoted_status_id,
+  start = nchar(as.character(df.TSLATwTimeline$quoted_status_id)) - (nchar(as.character(df.TSLATwTimeline$quoted_status_id))-2),
+  stop =  nchar(as.character(df.TSLATwTimeline$quoted_status_id))
+)
 
+#quoted_user_id limpieado
+df.TSLATwTimeline$quoted_user_id <- substr(
+  x = df.TSLATwTimeline$quoted_status_id,
+  start = nchar(as.character(df.TSLATwTimeline$quoted_user_id)) - (nchar(as.character(df.TSLATwTimeline$quoted_user_id))-2),
+  stop =  nchar(as.character(df.TSLATwTimeline$quoted_user_id))
+)
 
+#retweet_status_id limpiado
+df.TSLATwTimeline$retweet_status_id <- substr(
+  x = df.TSLATwTimeline$retweet_status_id,
+  start = nchar((df.TSLATwTimeline$retweet_status_id)) - (nchar((df.TSLATwTimeline$retweet_status_id))-2),
+  stop =  nchar((df.TSLATwTimeline$retweet_status_id))
+)
 
+#retweet_user_id limpiado
+df.TSLATwTimeline$retweet_user_id <- substr(
+  x = df.TSLATwTimeline$retweet_user_id,
+  start = nchar(as.character(df.TSLATwTimeline$retweet_user_id)) - (nchar(as.character(df.TSLATwTimeline$retweet_user_id))-2),
+  stop =  nchar(as.character(df.TSLATwTimeline$retweet_user_id))
+)
 
-
-
-
-
-
-    
-    
+#Workable version
+View(df.TSLATwTimeline)

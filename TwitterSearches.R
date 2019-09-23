@@ -8,7 +8,7 @@ TwitterTimeline <- userTimeline(
   excludeReplies = FALSE
 )
 
-#Twitter listo to Data frame
+#Twitter list to Data frame
 TwitterTimeline.df <- twListToDF(TwitterTimeline)
 
 #After 2014-06-01 and Before 2019-06-01 
@@ -17,9 +17,6 @@ TwitterTimeline.df <- subset(
   subset = (TwitterTimeline.df$created < "2019-06-01" &
             TwitterTimeline.df$created >= "2014-06-01")
 )
-
-#View data
-View(TwitterTimeline.df)
 
 #TwitterTimeline2014-2019 file
 write.csv(
@@ -32,7 +29,6 @@ TeslaUser <- getUser (
   user = "Tesla"
 )
 
-View(TeslaUser)
 #Verify Followers
 TeslaUser$getFollowersCount()
 
@@ -40,26 +36,22 @@ TeslaUser$getFollowersCount()
 #through the api
 
 #All Tesla Followers availible
-TeslaFollowers <- TeslaUser$getFollowers(n = 40000)
-#TeslaFollowers2 <- TeslaUser$getFollowers(n = 40000)
-#TeslaFollowers3 <- TeslaUser$getFollowers(n = 40000)
-#TeslaFollowers4 <- TeslaUser$getFollowers(n = 40000)
-#TeslaFollowers5 <- TeslaUser$getFollowers(n = 40000)
+TSLAFollowers <- TeslaUser$getFollowers(n = 55000)
+#TSLAFollowers2 <- TeslaUser$getFollowers(n = 55000)
+#TSLAFollowers3 <- TeslaUser$getFollowers(n = 55000)
+#TSLAFollowers4 <- TeslaUser$getFollowers(n = 55000)
 
-df.TeslaFollowers <- twListToDF(TeslaFollowers)
-#df.TeslaFollowers2 <- twListToDF(TeslaFollowers2)
-#df.TeslaFollowers3 <- twListToDF(TeslaFollowers3)
-#df.TeslaFollowers4 <- twListToDF(TeslaFollowers4)
-#df.TeslaFollowers5 <- twListToDF(TeslaFollowers5)
 
-View(TeslaFollowers.df)
+df.TSLAFollowers <- twListToDF(TSLAFollowers)
+#df.TSLAFollowers2 <- twListToDF(TSLAFollowers2)
+#df.TSLAFollowers3 <- twListToDF(TSLAFollowers3)
+#df.TSLAFollowers4 <- twListToDF(TSLAFollowers4)
+
+df.TSLAFollowers <- rbind(df.TSLAFollowers, df.TSLAFollowers2, df.TSLAFollowers3, df.TSLAFollowers4)
+
+View(df.TSLAFollowers)
 
 write.csv(
-  x = TeslaFollowers.df,
+  x = df.TSLAFollowers,
   file = "TSLATwFollowers.csv"
 )
-
-#Get all followers tweets
-
-
-
