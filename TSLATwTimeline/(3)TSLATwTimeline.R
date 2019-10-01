@@ -1,10 +1,8 @@
-#Como checar que los flowers no son bots
-#Crear y popular la base de datos.
-#?Generar mas followers para trabajar con.
+
 library(stringr)
 
 TSLATwTimeline <- read.csv(
-  file = "TSLATimeline/TSLATwTimeline.csv",
+  file = "TSLATwTimeline/(2)TSLATwTimeline.csv",
   sep = ",",
   stringsAsFactors = FALSE
 )
@@ -71,8 +69,7 @@ df.TSLATwTimeline$mentions_user_id <- str_remove(
   pattern = 'x'
 )
 
-df.TSLATwTimeline$mentions_user_id <- 
-str_split_fixed(
+df.TSLATwTimeline$mentions_user_id <- str_split_fixed(
   string = df.TSLATwTimeline$mentions_user_id,
   pattern = ' x',
   n = maximum.muil
@@ -96,12 +93,10 @@ for(i in length(df.TSLATwTimeline$mentions_user_id)){
 }
 df.TSLATwTimeline$X.. <- NULL
 
-
 #quoted_status_id limpiado
 maximum.qsil <- maximum.muil
 
-df.TSLATwTimeline$mentions_screen_name <- 
-  str_split_fixed(
+df.TSLATwTimeline$mentions_screen_name <- str_split_fixed(
     string = df.TSLATwTimeline$mentions_screen_name,
     pattern = ' ',
     n = maximum.qsil
@@ -147,3 +142,8 @@ df.TSLATwTimeline$retweet_user_id <- substr(
 
 #Workable version
 View(df.TSLATwTimeline)
+
+write.csv(
+  x = df.TSLATwTimeline,
+  file = "(4)TSLATwTimeLineWorkable.csv"
+)

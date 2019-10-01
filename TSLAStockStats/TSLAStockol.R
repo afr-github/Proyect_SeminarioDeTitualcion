@@ -1,9 +1,12 @@
 library(readr)
 #Variacion durante horas inactivas
 #Open - Low
-vha.tsla_stock.ol <- (vha.tsla_stock$Low - vha.tsla_stock$Open)
-df.vha.tsla_stock.ol <- data.frame(vha.tsla_stock.ol)
-names(df.vha.tsla_stock.ol) <- c("Open-Low")
+df.vha.tsla_stock.ol <- data.frame(
+  "Open_Low" = (TSLAStock$Low - TSLAStock$Open)
+)
+
+##Trabajar aqui --- 
+
 
 #Open-Low Intervals
 #####
@@ -47,7 +50,7 @@ df.vha.tsla_stock.ol.valm25_m37 <- subset(
 ##### 
 
 #Seleccion de fechas igual al precio mas alto entre la diferencia de precio
-#de: Open-High & Low
+#de: Open & Low
 #0_m5
 #####
 hdate0_m5 <- ifelse(

@@ -73,4 +73,3 @@ TopTSLAFollowers <- rbind(
   df.TSLAFollowersE, df.TSLAFollowersD, df.TSLAFollowersC, df.TSLAFollowersB, df.TSLAFollowersA
 )
 
-View(df.TSLAFollowersA)
