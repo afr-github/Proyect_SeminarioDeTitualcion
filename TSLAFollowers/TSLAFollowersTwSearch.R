@@ -3,6 +3,8 @@
 df.TSLAFollowersE$name[1:10]
 Twtry <- (df.TSLAFollowersE$screenName[1:1079])
 
+Twtry
+
 Twuser <- lookupUsers(
   users = df.TSLAFollowersE$screenName[1:354]
 )

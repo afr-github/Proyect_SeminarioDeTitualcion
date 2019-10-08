@@ -1,6 +1,9 @@
 library(twitteR)
 library(influenceR)
 library(igraph)
+library(tidyverse)
+library(lubridate)
+library(tidyr)
 
 #Keys
 apiKey <- '1RWlYtAbUBTXv4j0i4CW4BV17'

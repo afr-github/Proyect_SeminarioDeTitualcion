@@ -27,6 +27,8 @@ TSLATwFollowers4 <- read.csv(
 #Operacion 3
 df.TSLAFollowers <- rbind(TSLATwFollowers1, TSLATwFollowers2, TSLATwFollowers3, TSLATwFollowers4)
 
+View(df.TSLAFollowers)
+
 #Operacion 4
 df.TSLAFollowers <- subset(
   x = df.TSLAFollowers,
@@ -34,7 +36,6 @@ df.TSLAFollowers <- subset(
 )
 #Operacion 5
 df.TSLAFollowers <- df.TSLAFollowers[!duplicated(df.TSLAFollowers$id),]
-View(df.TSLAFollowers)
 
 #Operacion 6
 #Nivel E
@@ -72,4 +73,7 @@ df.TSLAFollowersA <- subset(
 TopTSLAFollowers <- rbind(
   df.TSLAFollowersE, df.TSLAFollowersD, df.TSLAFollowersC, df.TSLAFollowersB, df.TSLAFollowersA
 )
+
+
+
 
