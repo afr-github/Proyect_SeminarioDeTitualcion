@@ -27,7 +27,7 @@ TSLATwFollowers4 <- read.csv(
 #Operacion 3
 df.TSLAFollowers <- rbind(TSLATwFollowers1, TSLATwFollowers2, TSLATwFollowers3, TSLATwFollowers4)
 
-View(df.TSLAFollowers)
+#View(df.TSLAFollowers)
 
 #Operacion 4
 df.TSLAFollowers <- subset(
@@ -73,6 +73,15 @@ df.TSLAFollowersA <- subset(
 TopTSLAFollowers <- rbind(
   df.TSLAFollowersE, df.TSLAFollowersD, df.TSLAFollowersC, df.TSLAFollowersB, df.TSLAFollowersA
 )
+
+Followers <- lookupUsers(
+  users = TopTSLAFollowers$screenName
+)
+
+
+View(TopTSLAFollowers)
+
+View(Followers)
 
 
 
