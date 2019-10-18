@@ -70,12 +70,14 @@ ViewFollowers <- function(ViewFile){
 }
 
 #Remove for retry
-tryCatch({
-  expr = file.remove("TSLAFollowers/FollowersTweets.csv")
-}, warning = function(war){
-  print("Archivo no existe")
+removefile <- function(){
+    tryCatch({
+      expr = file.remove("TSLAFollowers/FollowersTweets.csv")
+    }, warning = function(war){
+      print("Archivo no existe")
+    }
+  )
 }
-)
 
 #AFTER EVERY 10 - 15 USERS, API call limit is reached
 runFill <- function(startID){
@@ -92,11 +94,15 @@ runFill <- function(startID){
   )
 }
 
-runFill(15)
+loadTwConection()
+loadTSLABotOrNotFollowers()
 
+#Funcion para buscar los tweets de los usuarios apartir del id que se ingrese.
+#runFill(1)
+
+#removefile()
 
 View(UsableUsers$screen_name)
-
 ViewFollowers("TSLAFollowers/FollowersTweets.csv")
 
 
