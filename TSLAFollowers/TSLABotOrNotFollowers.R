@@ -1,12 +1,12 @@
 #Checking for Bots using BotorNot
 
-searchTweetBotorNot <- function(inicio, fin){
-  info9 <- tweetbotornot(x = TSLAFollowers.sn[inicio:fin])
-  write.csv(
-    x = info9,
-    file = "TSLAFollowers/(9)botornotINFO.csv"
-  )
-}
+#searchTweetBotorNot <- function(inicio, fin){
+#  info9 <- tweetbotornot(x = TSLAFollowers.sn[inicio:fin])
+#  write.csv(
+#    x = info9,
+#    file = "TSLAFollowers/(9)botornotINFO.csv"
+#  )
+#}
 
 #LISTO
 #searchTweetBotorNot(950,1079)
@@ -14,6 +14,9 @@ searchTweetBotorNot <- function(inicio, fin){
 # Muestra grafica
 # info[order(info$prob_bot),] ## solo tomar los primeros 2 decimales
 
+#Funcion para cargar esta información de manera mas rapida
+loadTSLABotOrNotFollowers <- function(){
+  
 info <- read.csv(
   file = "TSLAFollowers/(1)botornotINFO.csv",
   sep = ",",
@@ -90,18 +93,18 @@ UsableUsers <- UsableUsers[!is.na(UsableUsers$screen_name),]
 UsableUsers <- UsableUsers[!is.null(UsableUsers$screen_name),]
 UsableUsers <- UsableUsers[nchar(UsableUsers$screen_name) > 1,]
 
-write.csv(
-  x = UsableUsers,
-  file = "TSLAFollowers/UsableUsers.csv"
-)
+
 
 #Usuarios utilizables:
 # Eran 1079 y ahorita solo quedan 436 usuarios, un 40% aproximadamente del total de usuarios que estaban, debido a:
 # 1: Ya no existe el perfil
 # 2: No se puede acceder a su información
 
-View(UsableUsers)
+}
 
-## Use map to generate a graph that shows where the users that are usable are.
-#Mapa para visualizar puntos de salida de los tweets o perfiles.
-maps::map("state", lwd = .3)
+write.csv(
+  x = UsableUsers,
+  file = "TSLAFollowers/UsableUsers.csv"
+)
+
+View(UsableUsers)

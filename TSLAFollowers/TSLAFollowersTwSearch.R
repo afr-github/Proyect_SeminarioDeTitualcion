@@ -31,7 +31,6 @@ SaveFollowers <- function(Follower){
     yes = SaveFollowersJoin(df.FollowersResult),
     no = createTable(df.FollowersResult)
   )
-  return()
 }
 
 SaveFollowersJoin <- function(New){
@@ -59,7 +58,7 @@ SaveFollowersJoin <- function(New){
     x = Join,
     file = "TSLAFollowers/FollowersTweets.csv",
   )
-  return(df.results)
+  return()
 }
 
 ViewFollowers <- function(ViewFile){
@@ -79,12 +78,24 @@ tryCatch({
 )
 
 #AFTER EVERY 10 - 15 USERS, API call limit is reached
-i <- 15
-while(i <= length(UsableUsers$screen_name)){
-  SaveFollowers(UsableUsers$screen_name[i])
-  i = i+1
+runFill <- function(startID){
+  i <- startID
+  tryCatch({
+    expr = 
+      while(i <= length(UsableUsers$screen_name)){
+        SaveFollowers(UsableUsers$screen_name[i])
+        i <- i+1
+      }
+  }, error = function(err){
+      runFill(startID = startID+1) 
+  }
+  )
 }
 
+runFill(15)
+
+
+View(UsableUsers$screen_name)
 
 ViewFollowers("TSLAFollowers/FollowersTweets.csv")
 
