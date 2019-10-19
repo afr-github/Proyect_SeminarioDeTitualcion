@@ -1,5 +1,11 @@
 #I need to get the list of users from level E to a usable format to get in the userTimeline
 #function to get all the tweets from that user.
+
+loadTwConection()
+loadTSLABotOrNotFollowers()
+loadTSLATwFollowers()
+
+
 UsableUser.sn <- UsableUsers$screen_name
 
 #View(FollowersSearch)
@@ -79,7 +85,6 @@ removefile <- function(){
   )
 }
 
-#AFTER EVERY 10 - 15 USERS, API call limit is reached
 runFill <- function(startID){
   i <- startID
   tryCatch({
@@ -94,8 +99,7 @@ runFill <- function(startID){
   )
 }
 
-loadTwConection()
-loadTSLABotOrNotFollowers()
+
 
 #Funcion para buscar los tweets de los usuarios apartir del id que se ingrese.
 #runFill(1)

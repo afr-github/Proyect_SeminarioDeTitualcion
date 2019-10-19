@@ -1,25 +1,27 @@
+
+loadTSLATwFollowers <- function(){
 #Operacion 1
 #Tesla Motros Inc. Twitter Followers (TSLATwFollowers)
 TSLATwFollowers1 <- read.csv(
-  file = "TSLAFollowers/TSLATwFollowers (1).csv",
+  file = "TSLAFollowers/TSLAFollower Work/TSLATwFollowers (1).csv",
   sep = ",",
   stringsAsFactors = FALSE
 )
 
 TSLATwFollowers2 <- read.csv(
-  file = "TSLAFollowers/TSLATwFollowers (2).csv",
+  file = "TSLAFollowers/TSLAFollower Work/TSLATwFollowers (2).csv",
   sep = ",",
   stringsAsFactors = FALSE
 )
 
 TSLATwFollowers3 <- read.csv(
-  file = "TSLAFollowers/TSLATwFollowers (3).csv",
+  file = "TSLAFollowers/TSLAFollower Work/TSLATwFollowers (3).csv",
   sep = ",",
   stringsAsFactors = FALSE
 )
 
 TSLATwFollowers4 <- read.csv(
-  file = "TSLAFollowers/TSLATwFollowers (4).csv",
+  file = "TSLAFollowers/TSLAFollower Work/TSLATwFollowers (4).csv",
   sep = ",",
   stringsAsFactors = FALSE
 )
@@ -76,4 +78,4 @@ TopTSLAFollowers <- rbind(
 )
 
 TSLAFollowers.sn <- TopTSLAFollowers$screenName
-
+}
