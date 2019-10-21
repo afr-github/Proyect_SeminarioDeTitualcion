@@ -17,55 +17,55 @@
 #Funcion para cargar esta información de manera mas rapida
 loadTSLABotOrNotFollowers <- function(){
   info <- read.csv(
-    file = "TSLAFollowers/(1)botornotINFO.csv",
+    file = "TSLAFollowers/BotorNot Work/(1)botornotINFO.csv",
     sep = ",",
     stringsAsFactors = FALSE
   )
   
   info2 <- read.csv(
-    file = "TSLAFollowers/(2)botornotINFO.csv",
+    file = "TSLAFollowers/BotorNot Work/(2)botornotINFO.csv",
     sep = ",",
     stringsAsFactors = FALSE
   )
   
   info3 <- read.csv(
-    file = "TSLAFollowers/(3)botornotINFO.csv",
+    file = "TSLAFollowers/BotorNot Work/(3)botornotINFO.csv",
     sep = ",",
     stringsAsFactors = FALSE
   )
   
   info4 <- read.csv(
-    file = "TSLAFollowers/(4)botornotINFO.csv",
+    file = "TSLAFollowers/BotorNot Work/(4)botornotINFO.csv",
     sep = ",",
     stringsAsFactors = FALSE
   )
   
   info5 <- read.csv(
-    file = "TSLAFollowers/(5)botornotINFO.csv",
+    file = "TSLAFollowers/BotorNot Work/(5)botornotINFO.csv",
     sep = ",",
     stringsAsFactors = FALSE
   )
   
   info6 <- read.csv(
-    file = "TSLAFollowers/(6)botornotINFO.csv",
+    file = "TSLAFollowers/BotorNot Work/(6)botornotINFO.csv",
     sep = ",",
     stringsAsFactors = FALSE
   )
   
   info7 <- read.csv(
-    file = "TSLAFollowers/(7)botornotINFO.csv",
+    file = "TSLAFollowers/BotorNot Work/(7)botornotINFO.csv",
     sep = ",",
     stringsAsFactors = FALSE
   )
   
   info8 <- read.csv(
-    file = "TSLAFollowers/(8)botornotINFO.csv",
+    file = "TSLAFollowers/BotorNot Work/(8)botornotINFO.csv",
     sep = ",",
     stringsAsFactors = FALSE
   )
   
   info9 <- read.csv(
-    file = "TSLAFollowers/(9)botornotINFO.csv",
+    file = "TSLAFollowers/BotorNot Work/(9)botornotINFO.csv",
     sep = ",",
     stringsAsFactors = FALSE
   )

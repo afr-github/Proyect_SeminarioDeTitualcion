@@ -8,6 +8,8 @@ loadTwConection <- function(){
   library(tidyr)
   library(DataExplorer)
   library(maps)
+  library(SentimentAnalysis)
+  library(tm)
   
   ## install remotes if not already (Already installed)
   #if (!requireNamespace("remotes", quietly = TRUE)) {

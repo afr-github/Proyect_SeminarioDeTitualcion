@@ -109,6 +109,11 @@ runFill <- function(startID){
 View(UsableUsers$screen_name)
 ViewFollowers("TSLAFollowers/FollowersTweets.csv")
 
+FollowersTweets <- read.csv(
+  file = "TSLAFollowers/FollowersTweets.csv",
+  stringsAsFactors = FALSE
+)
+
 
 
 
