@@ -5,9 +5,6 @@ loadTwConection()
 loadTSLABotOrNotFollowers()
 loadTSLATwFollowers()
 
-
-UsableUser.sn <- UsableUsers$screen_name
-
 #View(FollowersSearch)
 #setup_twitter_oauth(apiKey, apiSecret, accessToken, accessTokenSecret)
 
@@ -114,6 +111,7 @@ FollowersTweets <- read.csv(
   stringsAsFactors = FALSE
 )
 
+View(FollowersTweets)
 
 
 

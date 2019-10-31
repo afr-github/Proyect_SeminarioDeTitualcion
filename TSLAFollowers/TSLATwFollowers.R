@@ -77,5 +77,6 @@ TopTSLAFollowers <- rbind(
   df.TSLAFollowersE, df.TSLAFollowersD, df.TSLAFollowersC, df.TSLAFollowersB, df.TSLAFollowersA
 )
 
+View(TopTSLAFollowers)
 TSLAFollowers.sn <- TopTSLAFollowers$screenName
 }

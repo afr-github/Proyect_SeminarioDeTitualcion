@@ -10,6 +10,13 @@ loadTwConection <- function(){
   library(maps)
   library(SentimentAnalysis)
   library(tm)
+  library(wordcloud)
+  library(syuzhet)
+  library(tidytext)
+  library(dplyr)
+  library(ggplot2)
+  library(stringr)
+  library(quanteda)
   
   ## install remotes if not already (Already installed)
   #if (!requireNamespace("remotes", quietly = TRUE)) {
